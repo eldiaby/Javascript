@@ -107,3 +107,24 @@ movements.forEach((movement, index, array) => {
 });
 
 /////////////////////////////////////////////////
+
+// challinge #1
+const JuliaData = [3, 5, 2, 12, 7], KateData = [4, 1, 15, 8, 3];
+
+
+const checkDogs = (JuliaDogs, KateDogs) => {
+  const juliaRightData = JuliaDogs.slice(1, -2);
+  const theFinalArrayData = juliaRightData.concat(KateDogs)
+  console.log(theFinalArrayData);
+  theFinalArrayData.forEach((value, index) => {
+    
+    value>3 ?console.log("Dog number " + index + 1 +" is an adult, and is ",value ,"years old �") : console.log("Dog number " + index + 1 +" is still puppy, and is ",value ,"years old �") 
+    // or a puppy("Dog number 2 is still a puppy 
+   //   )
+    
+  })
+}
+
+
+checkDogs(JuliaData, KateData)
+checkDogs([9, 16, 6, 8, 3], [10, 5, 6, 1, 4])
