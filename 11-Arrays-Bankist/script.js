@@ -231,6 +231,9 @@ btnSort.addEventListener('click', e => {
   sorted = !sorted;
 });
 
+
+
+/*
 /////////////////////////////////////////////////
 // LECTURES
 
@@ -385,3 +388,4 @@ const dogsShallowSorted = dogs
   .slice()
   .sort((a, b) => a.recommendedFood - b.recommendedFood);
 console.log(dogsShallowSorted);
+*/

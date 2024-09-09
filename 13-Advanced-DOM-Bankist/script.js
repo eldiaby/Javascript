@@ -31,6 +31,7 @@ document.addEventListener('keydown', function (e) {
   }
 });
 
+/*
 // cookie message
 const message = document.createElement('div');
 message.classList.add('cookie-message');
@@ -39,7 +40,21 @@ document.querySelector('header').append(message);
 document.querySelector('.btn--close-cookie').addEventListener('click', () => {
   message.remove();
 });
+*/
 
-document
-  .querySelector('h1')
-  .addEventListener('mouseover', () => console.log('mouseover'));
+///////////////////////////////////////////////////////
+// lecrtures
+
+const randomNumber = (min, max) =>
+  Math.floor(Math.random() * (max - min + 1) + min);
+
+const randomColor = () =>
+  `rgb(${randomNumber(0, 255)}, ${randomNumber(0, 255)}, ${randomNumber(
+    0,
+    255
+  )})`;
+
+document.querySelector('.nav__link').addEventListener('click', function (e) {
+  console.log(e.currentTarget);
+  e.currentTarget.style.backgroundColor = randomColor();
+});
