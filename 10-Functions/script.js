@@ -67,30 +67,49 @@ const poll = {
   answers: new Array(4).fill(0),
 };
 
-const isValid = userInput => (typeof userInput === 'number' && userInput <= 3 && userInput >= 0) ? true : false;
+const isValid = userInput =>
+  typeof userInput === 'number' && userInput <= 3 && userInput >= 0
+    ? true
+    : false;
 
 const displayResults = function (type = 'string') {
-  if (type === 'string') console.log(`Poll results are ${this.answers.join(',')}`)
-  else if (type === 'array')  console.log(this.answers)
-}
+  if (type === 'string')
+    console.log(`Poll results are ${this.answers.join(',')}`);
+  else if (type === 'array') console.log(this.answers);
+};
 
 const registerNewAnswer = function () {
   // const { question, options } = poll;
   let userInput;
   do {
-    userInput = Number(window.prompt(`${this.question}
+    userInput = Number(
+      window.prompt(`${this.question}
 ${this.options.join(`\n`)}
-(Write option number | if there is no choice it will be 0)`));
-  } while(!isValid(userInput))
+(Write option number | if there is no choice it will be 0)`)
+    );
+  } while (!isValid(userInput));
   this.answers[userInput]++;
   console.log(this.answers);
-  displayResults.call(poll, userInput)
+  displayResults.call(poll, userInput);
 };
 
-document.querySelector('.poll').addEventListener('click', registerNewAnswer.bind(poll));
+document
+  .querySelector('.poll')
+  .addEventListener('click', registerNewAnswer.bind(poll));
 
+const Data1 = [5, 2, 3];
+const Data2 = [1, 5, 3, 9, 6, 1];
 
-const Data1 = [5, 2, 3]
-const Data2 = [1, 5, 3, 9, 6, 1]
+displayResults.call({ answers: Data1 });
 
-displayResults.call({answers : Data1})
+////////////////////////////////////////
+//challing #2
+
+(function () {
+  const header = document.querySelector('h1');
+  header.style.color = 'red';
+
+  document.querySelector('body').addEventListener('click', function () {
+    header.style.color = 'blue';
+  });
+})();

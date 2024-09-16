@@ -9,6 +9,12 @@ const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
 const btnScrollTo = document.querySelector('.btn--scroll-to');
 const section1 = document.querySelector('#section--1');
 
+const tabs = document.querySelectorAll('.operations__tab');
+const tabsContainer = document.querySelector('.operations__tab-container');
+const tabsContent = document.querySelectorAll('.operations__content');
+
+const nav = document.querySelector('.nav');
+
 const openModal = function (e) {
   e.preventDefault();
   modal.classList.remove('hidden');
@@ -80,6 +86,55 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
     const id = e.target.getAttribute('href');
     document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
   }
+});
+
+///////////////////////////////////////////////////////
+//  Tabbed component
+
+// Events hamdlers
+tabsContainer.addEventListener('click', e => {
+  const clicked = e.target.closest('.operations__tab');
+  if (!clicked) return;
+
+  // Removing acive classes
+  tabs.forEach(tab => tab.classList.remove('operations__tab--active'));
+  tabsContent.forEach(c => c.classList.remove('operations__content--active'));
+
+  // Active tab
+  clicked.classList.add('operations__tab--active');
+
+  // Active tabsContent
+  document
+    .querySelector(`.operations__content--${clicked.dataset.tab}`)
+    .classList.add('operations__content--active');
+});
+
+/////////////////////////////////////////////////////////
+// nav hover animation
+
+const handleHoverNav = function (e) {
+  if (e.target.classList.contains('nav__link')) {
+    const hoverd = e.target;
+    const sibling = hoverd.closest('.nav').querySelectorAll('.nav__link');
+    const logo = hoverd.closest('.nav').querySelector('img');
+
+    sibling.forEach(link => {
+      if (link !== hoverd) link.style.opacity = this;
+    });
+    logo.style.opacity = this;
+  }
+};
+
+nav.addEventListener('mouseover', handleHoverNav.bind(0.5));
+nav.addEventListener('mouseout', handleHoverNav.bind(1));
+
+/////////////////////////////////////////////////////////
+// Sticky nav
+const init = section1.getBoundingClientRect();
+
+window.addEventListener('scroll', function (e) {
+  if (window.scrollY > init.top) nav.classList.add('sticky');
+  else nav.classList.remove('sticky');
 });
 
 ///////////////////////////////////////////////////////
