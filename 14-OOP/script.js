@@ -100,8 +100,8 @@ bmw.brake();
 console.log(bmw.speed);
 
 // challinge #2
-class CarCL {
-  constractor(make, speed) {
+class CarCl {
+  constructor(make, speed) {
     this.make = make;
     this.speed = speed;
   }
@@ -129,4 +129,57 @@ class CarCL {
   }
 }
 
-const ford = new CarCL('ford', 120);
+const ford = new CarCl('ford', 120);
+console.log(`=======================`);
+
+// challinge #3
+const Ev = function (make, speed, charge) {
+  Car.call(this, make, speed);
+  this.charge = charge;
+};
+
+Ev.prototype = Object.create(Car.prototype);
+
+Ev.prototype.chargeTo = function (charge) {
+  this.charge = charge;
+};
+
+Ev.accelerate = function () {
+  this.speed += 20;
+  this.charge--;
+  console.log(
+    `Tesla going at ${this.speed} Km/h, with a charge of ${this.charge}%.`
+  );
+};
+
+const tesla = new Ev('tesla', 120, 23);
+tesla.brake();
+tesla.chargeTo(90);
+tesla.accelerate();
+console.log(`=======================`);
+
+// challinge #4
+class EvCl extends CarCl {
+  #charge;
+  constructor(make, speed, charge) {
+    super(make, speed);
+    this.#charge = charge;
+  }
+
+  chargeTo(charge) {
+    this.charge = charge;
+  }
+
+  accelerate() {
+    this.speed += 20;
+    this.#charge--;
+    console.log(
+      `Tesla going at ${this.speed} Km/h, with a charge of ${this.#charge}%.`
+    );
+  }
+}
+
+const rivian = new EvCl(`rivian`, 120, 23);
+rivian.brake();
+rivian.chargeTo(95);
+rivian.accelerate();
