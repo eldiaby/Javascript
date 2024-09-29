@@ -55,7 +55,6 @@ console.log(jonas);
 
 
 
-*/
 
 // inhiritance
 
@@ -69,6 +68,7 @@ const Person = function (firstName, lastName, birthYear) {
 Person.prototype.calcAge = function () {
   this.age = 2037 - this.birthYear;
 };
+*/
 
 /////////////////////////////////////////////////////////
 // challinges
@@ -93,11 +93,9 @@ const bmw = new Car('BMW', 120);
 const mercedes = new Car('Mercedes', 95);
 
 bmw.brake();
-bmw.brake();
-bmw.brake();
-bmw.brake();
-bmw.brake();
+bmw.accelerate();
 console.log(bmw.speed);
+console.log(`=======================`);
 
 // challinge #2
 class CarCl {
@@ -130,6 +128,9 @@ class CarCl {
 }
 
 const ford = new CarCl('ford', 120);
+ford.brake();
+ford.accelerate();
+console.log(ford.speed);
 console.log(`=======================`);
 
 // challinge #3
@@ -156,6 +157,7 @@ const tesla = new Ev('tesla', 120, 23);
 tesla.brake();
 tesla.chargeTo(90);
 tesla.accelerate();
+console.log(tesla.speed);
 console.log(`=======================`);
 
 // challinge #4
@@ -183,3 +185,4 @@ const rivian = new EvCl(`rivian`, 120, 23);
 rivian.brake();
 rivian.chargeTo(95);
 rivian.accelerate();
+console.log(rivian.speed);
