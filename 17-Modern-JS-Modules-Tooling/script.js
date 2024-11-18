@@ -1,8 +1,7 @@
 // Exporting file
-
+// console.log(shoppingCart);
 import shoppingCart from './shoppingCart.js';
 
-/*
 // Simple inport
 // import { addToCart, totalPrice, totalQuantity } from './shoppingCart.js';
 
@@ -28,11 +27,28 @@ add('apple', 5);
 add('bread', 2);
 add('toste', 3);
 
-// When we import sothing we import itself not a copy of it (live connection)
-console.log(cart);import { cart } from './shoppingCart';
+// When we import somthing we import itself not a copy of it (live connection)
+console.log(cart);
+import { cart } from './shoppingCart';
 
+// ================================================================== //
+// Top level await
+// const res = await fetch(`https://jsonplaceholder.typicode.com/posts`);
+// const data = await res.json();
+// console.log(data[1]);
 
-*/
+const getLastPost = async function () {
+  const res = await fetch(`https://jsonplaceholder.typicode.com/posts`);
+  const data = await res.json();
+
+  return {
+    title: data.at(-1).title,
+    text: data.at(-1).body,
+  };
+};
+
+// const lastPost = await getLastPost();
+// console.log(lastPost);
 
 // ================================================================== //
 const ShoppingCart = (function () {
@@ -65,4 +81,27 @@ const ShoppingCart = (function () {
 
 ShoppingCart.addToCart('pizza', 4);
 ShoppingCart.addToCart('apples', 7);
-console.log(ShoppingCart.shoppingCost);
+// console.log(ShoppingCart.shoppingCost);
+
+// Import fron libraries
+import cloneDeep from 'lodash-es';
+
+const statu = {
+  cart: [
+    { product: 'pizza', count: 2 },
+    { product: 'koshry', count: 5 },
+  ],
+  signin: true,
+};
+
+const deepCloneStatu = cloneDeep(statu);
+
+statu.signin = false;
+console.log(statu);
+console.log(deepCloneStatu);
+
+if (module.hot) {
+  module.hot.accept();
+}
+
+// import 'core-js/stable';

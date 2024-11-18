@@ -1,0 +1,20 @@
+{
+  "dependencies": {
+    "leaflet": "^1.9.4",
+    "lodash-es": "^4.17.21"
+  },
+  "name": "17-modern-js-modules-tooling",
+  "version": "1.0.0",
+  "scripts": {
+    "parcel:start": "parcel index.html",
+    "parcel:build": "parcel build index.html",
+    "parcel:clear": "parcel cache clear"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "parcel": "^2.13.0"
+  }
+}
